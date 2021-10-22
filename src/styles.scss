@@ -1,0 +1,124 @@
+@import "fibonacci-styles";
+
+label, button {
+    font-family: Arial;
+}
+
+#input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  
+    height: $fib-8 * 1px;
+    overflow: hidden;
+  
+    border: $fib-1 * 1px solid;
+    border-color: find-fib-color(success) !important;
+    transition: border-color $fib-8 * 0.01s,
+                color $fib-8 * 0.01s,
+                height $fib-7 * 0.01s;
+  
+    &.error {
+        border-color: find-fib-color(error) !important;
+    }
+  
+    &:hover {
+        border: $fib-2 * 1px solid;
+    }
+  
+    &:focus-within, &.focused{
+        align-items: flex-end;
+  
+        height: $fib-9 * 1px;
+        border: $fib-2 * 1px solid;
+    }
+}
+
+
+#placeholder-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+  
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  
+    label {
+        font-size:  medium;
+        opacity: $fib-9 * 1%;
+
+        transition: font-size $fib-8 * 0.01s;
+    }
+  
+    &.focused {
+        align-items: flex-start;
+
+        label {
+            font-size:  smaller;
+        }
+    }
+}
+
+#error-container {
+    display: flex;
+    align-items: flex-end;
+    
+    overflow: hidden;
+    z-index: -1;
+  
+    color: find-fib-color(error);
+  
+    label {
+        font-size:  smaller;
+        transition: transform $fib-8 * 0.01s,
+                    color $fib-8 * 0.01s;
+
+        &.collapse {
+            color: transparent;
+            transform: translate(0, -100%);
+        }
+    }
+}  
+  
+#button-container {
+    display: flex;
+    height: 100%;
+  
+    position: absolute;
+    align-items: center;
+  
+    right: 0;
+}
+
+input {
+    height: fit-content;
+    font-size:  medium;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+
+    &:focus, &.focused {
+        transition: padding $fib-7 * 0.01s;
+    }
+}
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font-size: larger;
+    color: find-fib-color(success);
+
+    &:hover {
+        cursor: pointer;
+        font-weight: 900;
+    }
+
+    &.error {
+        color: find-fib-color(error);
+    }
+}
