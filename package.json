@@ -1,6 +1,6 @@
 {
   "name": "vue-ts-buttons",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -32,6 +32,7 @@
   "bugs": {
     "url": "https://github.com/alvidir/vue-ts-buttons/issues"
   },
+  "main": "./src/main.ts",
   "homepage": "https://github.com/alvidir/vue-ts-buttons#readme",
   "license": "MIT",
   "repository": {
