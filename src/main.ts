@@ -1,10 +1,13 @@
+import SubmitButton from './SubmitButton.vue'
+
 export default {
- install(Vue: any, options: any) {
- }
+    install(Vue: any, options: any) {
+        Vue.component("submit-button", SubmitButton);
+    }
 };
 
 // for debugging
-// import { createApp } from 'vue'
-// import Demo from "./demo.vue";
+import { createApp } from 'vue'
+import Demo from "./demo.vue";
 
-// createApp(Demo).mount('#app')
+createApp(Demo).mount('#app')
