@@ -25,3 +25,4 @@ pnpm-debug.log*
 # as a library of components
 public
 demo.*
+lib

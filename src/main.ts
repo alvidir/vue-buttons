@@ -1,9 +1,11 @@
 import SubmitButton from './SubmitButton.vue'
+import SwitchButton from './SwitchButton.vue'
+import ButtonSet from './ButtonSet.vue'
 
 export default {
-    install(Vue: any, options: any) {
-        Vue.component("submit-button", SubmitButton);
-    }
+    SubmitButton,
+    SwitchButton,
+    ButtonSet
 };
 
 // for debugging
