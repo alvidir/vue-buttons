@@ -4,7 +4,7 @@
         :class="{disabled: disabled}"
         v-if="actions">
     <button v-for="action, index in getActions"
-            :class="{vl: index < latestIndex}"
+            :class="{vl: index < latestIndex, large: isLarge}"
             :key="action"
             @click.stop="onActionClicked(action)">
       <slot :name="action"></slot>
@@ -16,6 +16,7 @@
 import { defineComponent } from "vue"
 
 const CLICK_EVENT_NAME = "click"
+const OPTION_LARGE = "large"
 
 export default defineComponent({
   name: "ButtonSet",
@@ -23,6 +24,7 @@ export default defineComponent({
   components: {},
   
   props: {
+    option: String,
     actions: {
       type: Array,
       required: true,
@@ -31,7 +33,7 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 
   computed: {
@@ -41,6 +43,10 @@ export default defineComponent({
 
     latestIndex(): number {
       return this.actions.length -1;
+    },
+
+    isLarge(): boolean {
+      return this.option === OPTION_LARGE;
     }
   },
 
@@ -64,7 +70,7 @@ export default defineComponent({
 
 button {
   min-height: $fib-8 * 1px;
-  width: $fib-8 * 1px;
+  min-width: $fib-8 * 1px;
 
   background: transparent;
   border: none;
@@ -80,6 +86,11 @@ button {
 
   &:active {
     background: transparent;
+  }
+
+  &.large {
+    min-height: $fib-9 * 1px;
+    min-width: $fib-9 * 1px;
   }
 }
 
