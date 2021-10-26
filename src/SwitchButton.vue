@@ -58,6 +58,7 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@use "sass:math";
 @import "styles.scss";
 
 $checked-color: find-fib-color(emphasis) !default;
@@ -116,8 +117,8 @@ span {
 
       /* Move a little bit the inner circle to the right */
       left: $fib-1 * 1px;
-      height: $switch-height - $fib-5 * 1px / 2;
-      width: $switch-height - $fib-5 * 1px / 2;
+      height: $switch-height - math.div($fib-5, 2) * 1px;
+      width: $switch-height - math.div($fib-5, 2) * 1px;
       
       /* Make the inner circle fully rounded */
       border-radius: 9999px;
@@ -144,8 +145,8 @@ span {
     border-radius: $switch-height;
 
     &::before {
-        height: $switch-height - $fib-5 * 1px / 2;
-        width: $switch-height - $fib-5 * 1px / 2;
+        height: $switch-height - math.div($fib-5, 2) * 1px;
+        width: $switch-height - math.div($fib-5, 2) * 1px;
     }
   }
 }

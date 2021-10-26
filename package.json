@@ -1,15 +1,16 @@
 {
   "name": "vue-ts-buttons",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "upgrade": "ncu --upgrade"
+    "upgrade": "ncu --upgrade",
+    "clean": "rm -rf dist src/dist node_modules package-lock.json"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "fibonacci-styles": "^1.1.4",
+    "fibonacci-styles": "^1.1.6",
     "vue": "^3.0.0",
     "vue-spinner": "^1.0.4"
   },
@@ -32,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/alvidir/vue-ts-buttons/issues"
   },
-  "main": "./src/main.ts",
+  "main": "src/main.ts",
   "homepage": "https://github.com/alvidir/vue-ts-buttons#readme",
   "license": "MIT",
   "repository": {
