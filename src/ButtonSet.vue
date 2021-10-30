@@ -1,17 +1,13 @@
 <template>
-  <span id="button-container"
-        v-if="actions"
-        :class="{large: isLarge}">
-    <button v-for="action, index in availableActions"
-            :key="action"
-            :class="{large: isLarge,
-                     disabled: disabled,
-                     'round-corners fib-5 left-only': index == 0,
-                     'round-corners fib-5 right-only': index == latestIndex}"
-            @click.stop="onActionClicked(action)">
-      <slot :name="action"></slot>
-    </button>
-  </span>
+  <button v-for="action, index in availableActions"
+          :key="action"
+          :class="{large: isLarge,
+                   disabled: disabled,
+                   'round-corners fib-5 left-only': index == 0,
+                   'round-corners fib-5 right-only': index == latestIndex}"
+          @click.stop="onActionClicked(action)">
+    <slot :name="action"></slot>
+  </button>
 </template>
 
 <script lang="ts">
@@ -71,7 +67,7 @@ export default defineComponent({
 @import "styles.scss";
 
 button {
-  height: 100%;
+  height: $fib-8 * 1px;
   min-width: $fib-8 * 1px;
   outline: none;
 
@@ -79,11 +75,16 @@ button {
   border-color: $border-color;
   
   transition: background $fib-7 * 0.01s,
-              border-color $fib-7 * 0.01s
+              border-color $fib-7 * 0.01s,
+              height $fib-7 * 0.01s,
               opacity $fib-7 * 0.01s;
 
   &.vl {
     border-right: 1px solid $border-color;
+  }
+
+  &.large {
+    height: $fib-9 * 1px;
   }
 
   &:not(.disabled) {
@@ -98,22 +99,6 @@ button {
       transition: background 0s;
       background: $background-color;
     }
-  }
-}
-
-#button-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  height: $fib-8 * 1px;
-  width: fit-content;
-  overflow: hidden;
-
-  transition: height $fib-7 * 0.01s;
-
-  &.large {
-    height: $fib-9 * 1px;
   }
 }
 </style>
