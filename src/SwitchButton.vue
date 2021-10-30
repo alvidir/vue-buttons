@@ -67,7 +67,6 @@ $darker-checked-color: darken($checked-color, $fib-4 * 1%) !default;
 $switch-height: $fib-7 * 1px !default;
 $switch-width: golden-ratio($switch-height) !default;
 
-
 label {
   cursor: pointer;
   display: flex;
@@ -131,7 +130,7 @@ span {
 
 .large {
   $switch-height: $fib-8 * 1px;
-  $switch-width: golden-ratio($switch-height);
+  $switch-width: $fib-9 * 1px;
 
   input {    
     &:checked + span::before {
@@ -151,21 +150,5 @@ span {
   }
 }
 
-.disabled {
-  input {
-    &:checked + span {
-        background-color: desaturate($checked-color, $fib-6 * 1%);
-    }
-    
-    &:checked + span::before {
-        border-color: desaturate($checked-color, $fib-6 * 1%);
-    }
-  }
 
-  span {
-    &::before {
-        background-color: lighten($disabled-color, $fib-8 * 1%);
-    }
-  }
-}
 </style>

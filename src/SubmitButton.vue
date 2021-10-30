@@ -68,7 +68,7 @@ export default defineComponent({
 @import "styles.scss";
 
 $submit-color: find-fib-color(success) !default;
-$clear-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
+$on-hover-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
 
 #submit-button {
     position: relative;
@@ -77,26 +77,25 @@ $clear-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
     width: 100%;
     
     border: $fib-1 * 1px solid;
+    border-color: $border-color;
+    font-size: medium; 
 
     transition: font-size $fib-7 * 0.01s,
-                height $fib-7 * 0.01s;
-
-    color: white;
-    font-size: medium;     
+                height $fib-7 * 0.01s;    
 
     &:not(.disabled){
         &:not(.off) {
           &:hover {
-            background: $submit-color;
+            background: $on-hover-submit-color;
           }
     
           &:active {
-            background: $clear-submit-color;
+            background: $submit-color;
           }
         }
 
-        border-color: darken($submit-color, $fib-4 * 1%);
-        background: $clear-submit-color;
+        border-color: darken($on-hover-submit-color, $fib-4 * 1%);
+        background: $submit-color;
     }
 
     &.disabled {
@@ -107,9 +106,6 @@ $clear-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
                   border-color $fib-8 * 0.1s,
                   font-size $fib-7 * 0.01s,
                   height $fib-7 * 0.01s;
-
-      border-color: darken($disabled-color, $fib-4 * 1%);
-      background: $disabled-color;
     }
 }
 </style>

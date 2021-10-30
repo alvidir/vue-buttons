@@ -1,11 +1,13 @@
 <template>
   <span id="button-container"
-        class="round-corners fib-5"
-        :class="{disabled: disabled}"
-        v-if="actions">
-    <button v-for="action, index in getActions"
-            :class="{vl: index < latestIndex, large: isLarge}"
+        v-if="actions"
+        :class="{large: isLarge}">
+    <button v-for="action, index in availableActions"
             :key="action"
+            :class="{large: isLarge,
+                     disabled: disabled,
+                     'round-corners fib-5 left-only': index == 0,
+                     'round-corners fib-5 right-only': index == latestIndex}"
             @click.stop="onActionClicked(action)">
       <slot :name="action"></slot>
     </button>
@@ -37,7 +39,7 @@ export default defineComponent({
   },
 
   computed: {
-    getActions() {
+    availableActions() {
       return this.actions?.filter(action => !!this.$slots[action as string])
     },
 
@@ -47,7 +49,7 @@ export default defineComponent({
 
     isLarge(): boolean {
       return this.option === OPTION_LARGE;
-    }
+    },
   },
 
   methods: {
@@ -69,28 +71,33 @@ export default defineComponent({
 @import "styles.scss";
 
 button {
-  min-height: $fib-8 * 1px;
+  height: 100%;
   min-width: $fib-8 * 1px;
-
-  background: transparent;
-  border: none;
   outline: none;
 
+  border: $fib-1 * 1px solid;
+  border-color: $border-color;
+  
+  transition: background $fib-7 * 0.01s,
+              border-color $fib-7 * 0.01s
+              opacity $fib-7 * 0.01s;
+
   &.vl {
-    border-right: 1px solid find-fib-color(disabled);
+    border-right: 1px solid $border-color;
   }
 
-  &:hover {
-    background: transparentize($color: $disabled-color, $amount: $fib-10 * 0.01);
-  }
+  &:not(.disabled) {
+    background: $background-color;
 
-  &:active {
-    background: transparent;
-  }
+    &:hover {
+      background: $on-hover-background-color;
+      border-color: $on-hover-border-color;
+    }
 
-  &.large {
-    min-height: $fib-9 * 1px;
-    min-width: $fib-9 * 1px;
+    &:active {
+      transition: background 0s;
+      background: $background-color;
+    }
   }
 }
 
@@ -99,20 +106,14 @@ button {
   display: flex;
   align-items: center;
 
+  height: $fib-8 * 1px;
   width: fit-content;
   overflow: hidden;
 
-  border: $fib-1 * 1px solid;
-  border-color: find-fib-color(disabled);
-  transition: color $fib-8 * 0.01s,
-              background $fib-8 * 0.01s,
-              height $fib-7 * 0.01s;
+  transition: height $fib-7 * 0.01s;
 
-  &.disabled {
-    button {
-      background: transparentize($color: $disabled-color, $amount: $fib-10 * 0.01);
-      color: $disabled-color;
-    }
+  &.large {
+    height: $fib-9 * 1px;
   }
 }
 </style>
