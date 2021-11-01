@@ -103,7 +103,7 @@ $on-hover-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
       font-size: smaller;
 
       transition: background $fib-8 * 0.01s,
-                  border-color $fib-8 * 0.1s,
+                  border-color $fib-8 * 0.01s,
                   font-size $fib-7 * 0.01s,
                   height $fib-7 * 0.01s;
     }

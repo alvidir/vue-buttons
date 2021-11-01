@@ -4,7 +4,7 @@ $background-color: get-fib-color(gray, 5, high) !default;
 $on-hover-background-color: get-fib-color(gray, 1, high) !default;
 $border-color: get-fib-color(gray, 9, high) !default;
 $on-hover-border-color: get-fib-color(gray, 10, high) !default;
-$disabled-color: find-fib-color(disabled);
+$disabled-color: find-fib-color(disabled) !default;
 
 label, button {
     font-family: Arial;
@@ -16,8 +16,5 @@ button {
 
 .disabled {
     cursor:default !important;
-    
-    opacity: 50%;
-    // border-color: darken($disabled-color, $fib-6 * 1%) !important;
-    // background: $disabled-color;
+    opacity: $fib-9 * 1%;
 }
