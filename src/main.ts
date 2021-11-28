@@ -1,6 +1,7 @@
 import RegularButton from './RegularButton.vue'
 import SubmitButton from './SubmitButton.vue'
 import SwitchButton from './SwitchButton.vue'
+import IconButton from './IconButton.vue'
 import ButtonSet from './ButtonSet.vue'
 
 export default {
@@ -8,6 +9,7 @@ export default {
     SubmitButton,
     SwitchButton,
     ButtonSet,
+    IconButton
 }
 
 import { createApp } from 'vue'
