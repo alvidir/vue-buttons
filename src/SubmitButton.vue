@@ -2,12 +2,13 @@
   <button id="submit-button"
           class="round-corners fib-5"
           :class="{disabled: disabled, off: loading}"
-          @click="onSubmitClicked">
+          @click="onClick">
     <slot v-if="!loading"></slot>
-    <span v-else>
-      <slot :name="loadingSlotName" v-if="hasCustomLoader"></slot>
-      <pulse-loader v-else :size="'8px'" :radius="'5px'" :color="defaultSpinnerColor"></pulse-loader>
-    </span>
+    <div v-else>
+      <slot :name="spinner">
+        <pulse-loader :size="'8px'" :radius="'5px'" :color="SPINNER_COLOR"></pulse-loader>
+      </slot>
+    </div>
   </button>
 </template>
 
@@ -17,7 +18,6 @@ import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 const SUBMIT_EVENT_NAME = "submit"
 const SPINNER_COLOR = "#FFFFFF80"
-const LOADING_SLOT_NAME = "loading"
 
 export default defineComponent({
   name: "SubmitButton",
@@ -37,22 +37,14 @@ export default defineComponent({
     },
   },
 
-  computed: {
-    loadingSlotName(): string {
-      return LOADING_SLOT_NAME
-    },
-
-    hasCustomLoader(): boolean {
-      return !!this.$slots[this.loadingSlotName]
-    },
-
-    defaultSpinnerColor(): string {
-      return SPINNER_COLOR
+  setup() {
+    return {
+      SPINNER_COLOR
     }
   },
 
   methods: {
-    onSubmitClicked() {
+    onClick() {
       if (this.disabled || this.loading) {
         return
       }
@@ -65,7 +57,7 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "styles.scss";
+@import "global.scss";
 
 $submit-color: find-fib-color(success) !default;
 $on-hover-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;

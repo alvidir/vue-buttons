@@ -59,7 +59,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @use "sass:math";
-@import "styles.scss";
+@import "global.scss";
 
 $checked-color: find-fib-color(emphasis) !default;
 $darker-checked-color: darken($checked-color, $fib-4 * 1%) !default;
