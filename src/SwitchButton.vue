@@ -1,5 +1,5 @@
 <template>
-  <label :class="{large: isLarge, disabled: disabled}">
+  <label :class="{large: large, disabled: disabled}">
     <input type="checkbox"
           v-model="checked"
           @change="onSwitchClicked"/>
@@ -19,27 +19,14 @@ export default defineComponent({
   components: {},
   
   props: {
-    option: String,
-    initial: {
-      type: Boolean,
-      default: false,
-    },
-
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+    initial: Boolean,
+    disabled: Boolean,
+    large: Boolean,
   },
 
   data() {
     return {
       checked: this.initial,
-    }
-  },
-
-  computed: {
-    isLarge(): boolean {
-      return this.option === OPTION_LARGE;
     }
   },
 

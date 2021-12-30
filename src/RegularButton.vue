@@ -1,8 +1,8 @@
 <template>
   <button class="round-corners fib-5"
-          :class="{large: isLarge,
+          :class="{large: large,
                    disabled: disabled}"
-          @click.stop="onButtonClicked">
+          @click="onClick">
     <slot></slot>
   </button>
 </template>
@@ -11,7 +11,6 @@
 import { defineComponent } from "vue"
 
 const CLICK_EVENT_NAME = "click"
-const OPTION_LARGE = "large"
 
 export default defineComponent({
   name: "RegularButton",
@@ -19,21 +18,12 @@ export default defineComponent({
   components: {},
   
   props: {
-    option: String,
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-  },
-
-  computed: {
-    isLarge(): boolean {
-      return this.option === OPTION_LARGE;
-    },
+    disabled: Boolean,
+    large: Boolean,
   },
 
   methods: {
-    onButtonClicked() {
+    onClick() {
       if (this.disabled) {
         return
       }
@@ -52,15 +42,12 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-
+  height: $fib-8 * 1px;
   border: $fib-1 * 1px solid;
   border-color: $border-color;
+  padding-left: $fib-6 * 1px;
+  padding-right: $fib-6 * 1px;
   background: $background-color;
-
-  height: $fib-8 * 1px;
-  width: fit-content;
-  outline: none;
-
   transition: height $fib-7 * 0.01s,
               background $fib-7 * 0.01s,
               border-color $fib-7 * 0.01s;
