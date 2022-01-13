@@ -1,5 +1,5 @@
 <template>
-  <button class="round-corners fib-5"
+  <button class="regular round-corners fib-5"
           :class="{large: large,
                    disabled: disabled}"
           @click="onClick">
@@ -37,9 +37,11 @@ export default defineComponent({
 <style lang="scss">
 @import "global.scss";
 
-button {
+button.regular {
+  cursor: pointer;
   position: relative;
   display: flex;
+  outline: none; 
   align-items: center;
   height: $fib-8 * 1px;
   border: $fib-1 * 1px solid;

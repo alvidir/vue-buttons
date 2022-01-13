@@ -6,15 +6,6 @@ $border-color: get-fib-color(gray, 9, high) !default;
 $on-hover-border-color: get-fib-color(gray, 10, high) !default;
 $disabled-color: find-fib-color(disabled) !default;
 
-label, button {
-    font-family: Arial;
-}
-
-button {
-    cursor: pointer;
-    outline: none;
-}
-
 .disabled {
     cursor:default !important;
     opacity: $fib-9 * 1%;
