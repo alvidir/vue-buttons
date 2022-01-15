@@ -60,9 +60,11 @@ button.submit {
   font-size: medium;
   color: #ffffffd0;
   outline: none; 
-
-  transition: font-size $fib-7 * 0.01s,
-              height $fib-7 * 0.01s;    
+              
+  transition: background $fib-8 * 0.01s,
+              border-color $fib-8 * 0.01s,
+              font-size $fib-7 * 0.01s,
+              height $fib-7 * 0.01s;
 
   &.large {
     height: $fib-9 * 1px !important;
@@ -88,11 +90,6 @@ button.submit {
     height: $fib-8 * 1px;
     font-size: smaller;
     color: darken($disabled-color, $fib-6 * 1%);
-
-    transition: background $fib-8 * 0.01s,
-                border-color $fib-8 * 0.01s,
-                font-size $fib-7 * 0.01s,
-                height $fib-7 * 0.01s;
   }
 }
 </style>
