@@ -35,20 +35,22 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "global.scss";
+@import "fibonacci-styles";
 
 button.regular {
-  cursor: pointer;
+  cursor:default;
   position: relative;
   display: flex;
-  outline: none; 
   align-items: center;
+  justify-content: center;
+  width: fit-content;
   height: $fib-8 * 1px;
+  font-size: medium;
   border: $fib-1 * 1px solid;
-  border-color: $border-color;
   padding-left: $fib-6 * 1px;
   padding-right: $fib-6 * 1px;
-  background: $background-color;
+  outline: none;
+
   transition: height $fib-7 * 0.01s,
               background $fib-7 * 0.01s,
               border-color $fib-7 * 0.01s;
@@ -58,15 +60,23 @@ button.regular {
   }
 
   &:not(.disabled) {
-    &:hover {
-      background: $on-hover-background-color;
-      border-color: $on-hover-border-color;
+    &:not(:active):not(.off):hover {
+      filter: brightness(110%);
     }
 
-    &:active {
-      transition: background 0s;
-      background: $background-color;
+    &:not(.off) {
+      cursor: pointer;
     }
-  } 
+
+    border-color: var(--color-text-disabled);
+    background: var(--color-button);
+    color: var(--color-secondary-text);
+  }
+
+  &.disabled {
+    border-color: var(--color-text-disabled);
+    background: var(--color-background-disabled);
+    color: var(--color-text-disabled);
+  }
 }
 </style>

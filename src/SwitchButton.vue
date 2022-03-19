@@ -24,6 +24,10 @@ export default defineComponent({
     initial: Boolean,
     disabled: Boolean,
     large: Boolean,
+    color: {
+      type: String,
+      default: "#6AB889",
+    },
   },
 
   data() {
@@ -48,23 +52,23 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @use "sass:math";
-@import "global.scss";
-
-$checked-color: find-fib-color(emphasis) !default;
-$darker-checked-color: darken($checked-color, $fib-4 * 1%) !default;
+@import "fibonacci-styles";
 
 $switch-height: $fib-7 * 1px !default;
-$switch-width: golden-ratio($switch-height) !default;
+$switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
+  cursor:default;
   position: relative;
   height: $switch-height;
   width: $switch-width;
+
+  &:not(.disabled) label {
+    cursor: pointer;
+  }
   
   label {
-    cursor: pointer;
     display: flex;
-
     width: fit-content;
   }
 
@@ -81,11 +85,11 @@ $switch-width: golden-ratio($switch-height) !default;
 
     &:checked + span {
         /* Teal background */
-        background-color: $checked-color;
+        background-color: v-bind(color);
     }
     
     &:checked + span::before {
-        border-color: $checked-color;
+        border-color: v-bind(color);
         transform: translateX($switch-width - $switch-height);
     }
   }
@@ -98,7 +102,7 @@ $switch-width: golden-ratio($switch-height) !default;
 
     /* Make the container element rounded */
     border-radius: $switch-height;
-    background-color: lighten($disabled-color, $fib-6 * 1%);
+    background-color: var(--color-text-disabled);
 
     /* In case the label gets long, the toggle shouldn't shrink. */
     flex-shrink: 0;
@@ -115,16 +119,16 @@ $switch-width: golden-ratio($switch-height) !default;
         
         /* Make the inner circle fully rounded */
         border-radius: 9999px;
-        background-color: white;
+        background-color: var(--color-text-light);
     
         transition: transform $fib-8 * 0.01s;
-        border: 2px solid $disabled-color;
+        border: 2px solid #808080;
     }
   }
 
   &.large {
     $switch-height: $fib-8 * 1px;
-    $switch-width: golden-ratio($switch-height);
+    $switch-width: $FIB_RATIO * $switch-height;
 
     min-height: $switch-height !important;
     min-width: $switch-width !important;
@@ -148,4 +152,19 @@ $switch-width: golden-ratio($switch-height) !default;
   }
 }
 
+.disabled {
+  span {
+    background-color: var(--color-background-disabled);
+
+    &::before {
+        background-color: var(--color-background-disabled);
+        border: 2px solid var(--color-text-disabled);
+    }
+  }
+
+  input:checked + span {
+    /* Teal background */
+    background-color: v-bind(color);
+  }
+}
 </style>

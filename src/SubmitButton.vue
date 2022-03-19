@@ -45,20 +45,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "global.scss";
-
-$submit-color: find-fib-color(success) !default;
-$on-hover-submit-color: lighten($submit-color,  $fib-4 * 1%) !default;
+@import "fibonacci-styles";
 
 button.submit {
-  cursor: pointer;
+  cursor:default;
   position: relative;
-  height: $fib-9 * 1px;
+  height: $fib-8 * 1px;
   width: 100%;
   border: $fib-1 * 1px solid;
-  border-color: $border-color;
+  border-color: var(--color-accent);
+  color: var(--color-text-light);
   font-size: medium;
-  color: #ffffffd0;
   outline: none; 
               
   transition: background $fib-8 * 0.01s,
@@ -72,24 +69,22 @@ button.submit {
   }
 
   &:not(.disabled){
-    &:not(.off) {
-      &:hover {
-        background: $on-hover-submit-color;
-      }
-
-      &:active {
-        background: $submit-color;
-      }
+    &:not(:active):not(.off):hover {
+      filter: brightness(110%);
     }
 
-    border-color: darken($on-hover-submit-color, $fib-4 * 1%);
-    background: $submit-color;
+    &:not(.off) {
+      cursor: pointer;
+    }
+    
+    border-color: var(--color-green);
+    background: var(--color-green);
   }
 
   &.disabled {
-    height: $fib-8 * 1px;
-    font-size: smaller;
-    color: darken($disabled-color, $fib-6 * 1%);
+    border-color: var(--color-text-disabled);
+    background: var(--color-background-disabled);
+    color: var(--color-text-disabled);
   }
 }
 </style>

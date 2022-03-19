@@ -1,7 +1,6 @@
 import RegularButton from './RegularButton.vue'
 import SubmitButton from './SubmitButton.vue'
 import SwitchButton from './SwitchButton.vue'
-import { defineCustomElement } from "vue"
 
 const REGULAR_BUTTON_TAG = "regular-button"
 const SUBMIT_BUTTON_TAG = "submit-button"
