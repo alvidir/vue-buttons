@@ -18,7 +18,7 @@
     <div class="demo-item">
       <switch-button @switch="changeSize"
                      :disabled="disabled"
-                     :initial="true"
+                     :checked="large"
                      :large="large">
       </switch-button>
     </div>
@@ -34,7 +34,7 @@ export default defineComponent({
     return {
       loading: false,
       disabled: false,
-      large: true,
+      large: false,
     }
   },
 
@@ -49,9 +49,14 @@ export default defineComponent({
       setTimeout(() => this.disabled = false, 5000)
     },
 
-    changeSize() {
-      this.large = !this.large
+    changeSize(value: boolean) {
+      console.log(value)
+      this.large = value
     }
+  },
+
+  mounted() {
+    setTimeout(() => this.large = true, 1000)
   }
 });
 </script>

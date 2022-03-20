@@ -3,11 +3,11 @@
        :class="{large: large, disabled: disabled}">
     <label>
       <input type="checkbox"
-            v-model="checked"
-            @change="onSwitchClicked"/>
+             v-model="model"
+             @change="onSwitchClicked"/>
       <span></span>
     </label>
-  </div>
+  </div> 
 </template>
 
 <script lang="ts">
@@ -21,29 +21,30 @@ export default defineComponent({
   components: {},
   
   props: {
-    initial: Boolean,
+    checked: Boolean,
     disabled: Boolean,
     large: Boolean,
     color: {
       type: String,
-      default: "#6AB889",
+      default: "var(--color-green)",
+    },
+  },
+
+  watch: {
+    checked(value: boolean) {
+      this.model = value
     },
   },
 
   data() {
     return {
-      checked: this.initial,
+      model: this.checked,
     }
   },
 
   methods: {
     onSwitchClicked() {
-      if (this.disabled) {
-        this.checked = !this.checked
-        return
-      }
-
-      this.$emit(SWITCH_EVENT_NAME, this.checked)
+      if (!this.disabled) this.$emit(SWITCH_EVENT_NAME, this.model)
     }
   }
 })
