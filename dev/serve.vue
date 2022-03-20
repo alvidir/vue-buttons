@@ -93,10 +93,4 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
-.icon {
-  height: 24px;
-  width: 24px;
-  background: purple;
-}
 </style>
