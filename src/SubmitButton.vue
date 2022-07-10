@@ -6,7 +6,7 @@
           @click="onClick">
     <slot v-if="!loading"></slot>
     <div v-else>
-      <slot :name="spinner">
+      <slot name="spinner">
         <pulse-loader :size="'8px'" :radius="'5px'" color="#ffffff80"></pulse-loader>
       </slot>
     </div>
