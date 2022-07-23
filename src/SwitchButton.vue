@@ -120,7 +120,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
         
         /* Make the inner circle fully rounded */
         border-radius: 9999px;
-        background-color: var(--color-text-light);
+        background-color: var(--color-background-primary);
     
         transition: transform $fib-8 * 0.01s;
         border: 2px solid #808080;
