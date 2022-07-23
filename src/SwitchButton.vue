@@ -151,6 +151,10 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       }
     }
   }
+
+  &:not(.disabled):hover span::before {
+    filter: brightness(110%);
+  }
 }
 
 .disabled {

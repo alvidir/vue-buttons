@@ -54,7 +54,7 @@ button.submit {
   width: 100%;
   border: $fib-1 * 1px solid;
   border-color: var(--color-accent);
-  color: var(--color-text-light);
+  color: #F8F9FA;
   font-size: medium;
   outline: none; 
               

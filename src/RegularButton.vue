@@ -70,7 +70,7 @@ button.regular {
 
     border-color: var(--color-text-disabled);
     background: var(--color-button);
-    color: var(--color-secondary-text);
+    color: var(--color-text);
   }
 
   &.disabled {
