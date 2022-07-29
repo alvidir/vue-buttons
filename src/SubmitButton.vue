@@ -53,8 +53,7 @@ button.submit {
   height: $fib-8 * 1px;
   width: 100%;
   border: $fib-1 * 1px solid;
-  border-color: var(--color-accent);
-  color: #F8F9FA;
+  color: var(--color-white);
   font-size: medium;
   outline: none; 
               
