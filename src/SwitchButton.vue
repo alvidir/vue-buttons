@@ -4,6 +4,7 @@
     <label>
       <input type="checkbox"
              v-model="model"
+             :disabled="disabled"
              @change="onSwitchClicked"/>
       <span></span>
     </label>
@@ -120,10 +121,10 @@ $switch-width: $FIB_RATIO * $switch-height !default;
         
         /* Make the inner circle fully rounded */
         border-radius: 9999px;
-        background-color: var(--color-background-primary);
+        background-color: var(--color-button);
     
         transition: transform $fib-8 * 0.01s;
-        border: 2px solid #808080;
+        border: 2px solid var(--color-secondary-text);
     }
   }
 
@@ -153,7 +154,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   }
 
   &:not(.disabled):hover span::before {
-    filter: brightness(110%);
+    background-color: var(--color-button-hover);;
   }
 }
 

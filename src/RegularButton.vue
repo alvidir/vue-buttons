@@ -61,7 +61,7 @@ button.regular {
 
   &:not(.disabled) {
     &:not(:active):not(.off):hover {
-      filter: brightness(110%);
+      background: var(--color-button-hover);
     }
 
     &:not(.off) {
