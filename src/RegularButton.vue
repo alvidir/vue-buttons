@@ -64,10 +64,6 @@ button.regular {
       background: var(--color-button-hover);
     }
 
-    &:not(.off) {
-      cursor: pointer;
-    }
-
     border-color: var(--color-text-disabled);
     background: var(--color-button);
     color: var(--color-text);

@@ -65,7 +65,7 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 * {
-  @extend .theme-light;
+  @extend .theme-dark;
 
   margin: 0;
   padding: 0;

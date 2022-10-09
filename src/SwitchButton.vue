@@ -64,10 +64,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   position: relative;
   height: $switch-height;
   width: $switch-width;
-
-  &:not(.disabled) label {
-    cursor: pointer;
-  }
   
   label {
     display: flex;
@@ -154,7 +150,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   }
 
   &:not(.disabled):hover span::before {
-    background-color: var(--color-button-hover);;
+    background-color: var(--color-button-hover);
   }
 }
 

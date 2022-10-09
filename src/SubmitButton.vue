@@ -71,10 +71,6 @@ button.submit {
     &:not(:active):not(.off):hover {
       filter: brightness(110%);
     }
-
-    &:not(.off) {
-      cursor: pointer;
-    }
     
     border-color: var(--color-green);
     background: var(--color-green);
