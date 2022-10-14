@@ -55,6 +55,8 @@ button.submit {
   border: $fib-1 * 1px solid;
   color: var(--color-white);
   font-size: medium;
+  padding-left: $fib-6 * 1px;
+  padding-right: $fib-6 * 1px;
   outline: none; 
               
   transition: background $fib-8 * 0.01s,
