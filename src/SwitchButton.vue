@@ -1,26 +1,27 @@
 <template>
-  <div class="switch-button"
-       :class="{large: large, disabled: disabled}">
+  <div class="switch-button" :class="{ large: large, disabled: disabled }">
     <label>
-      <input type="checkbox"
-             v-model="model"
-             :disabled="disabled"
-             @change="onSwitchClicked"/>
+      <input
+        type="checkbox"
+        v-model="model"
+        :disabled="disabled"
+        @change="onSwitchClicked"
+      />
       <span></span>
     </label>
-  </div> 
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
-const SWITCH_EVENT_NAME = "switch"
+const SWITCH_EVENT_NAME = "switch";
 
 export default defineComponent({
   name: "SwitchButton",
   emits: [SWITCH_EVENT_NAME],
   components: {},
-  
+
   props: {
     checked: Boolean,
     disabled: Boolean,
@@ -33,22 +34,22 @@ export default defineComponent({
 
   watch: {
     checked(value: boolean) {
-      this.model = value
+      this.model = value;
     },
   },
 
   data() {
     return {
       model: this.checked,
-    }
+    };
   },
 
   methods: {
     onSwitchClicked() {
-      if (!this.disabled) this.$emit(SWITCH_EVENT_NAME, this.model)
-    }
-  }
-})
+      if (!this.disabled) this.$emit(SWITCH_EVENT_NAME, this.model);
+    },
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -60,11 +61,11 @@ $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
-  cursor:default;
+  cursor: default;
   position: relative;
   height: $switch-height;
   width: $switch-width;
-  
+
   label {
     display: flex;
     width: fit-content;
@@ -82,13 +83,13 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     border-width: 0;
 
     &:checked + span {
-        /* Teal background */
-        background-color: v-bind(color);
+      /* Teal background */
+      background-color: v-bind(color);
     }
-    
+
     &:checked + span::before {
-        border-color: v-bind(color);
-        transform: translateX($switch-width - $switch-height);
+      border-color: v-bind(color);
+      transform: translateX($switch-width - $switch-height);
     }
   }
 
@@ -107,20 +108,20 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     transition: background-color $fib-7 * 0.01s;
 
     &::before {
-        content: "";
-        position: absolute;
+      content: "";
+      position: absolute;
 
-        /* Move a little bit the inner circle to the right */
-        left: $fib-1 * 1px;
-        height: $switch-height - math.div($fib-5, 2) * 1px;
-        width: $switch-height - math.div($fib-5, 2) * 1px;
-        
-        /* Make the inner circle fully rounded */
-        border-radius: 9999px;
-        background-color: var(--color-button);
-    
-        transition: transform $fib-8 * 0.01s;
-        border: 2px solid var(--color-secondary-text);
+      /* Move a little bit the inner circle to the right */
+      left: $fib-1 * 1px;
+      height: $switch-height - math.div($fib-5, 2) * 1px;
+      width: $switch-height - math.div($fib-5, 2) * 1px;
+
+      /* Make the inner circle fully rounded */
+      border-radius: 9999px;
+      background-color: var(--color-button);
+
+      transition: transform $fib-8 * 0.01s;
+      border: 2px solid var(--color-secondary-text);
     }
   }
 
@@ -131,9 +132,9 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     min-height: $switch-height !important;
     min-width: $switch-width !important;
 
-    input {    
+    input {
       &:checked + span::before {
-          transform: translateX($switch-width - $switch-height);
+        transform: translateX($switch-width - $switch-height);
       }
     }
 
@@ -143,8 +144,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       border-radius: $switch-height;
 
       &::before {
-          height: $switch-height - math.div($fib-5, 2) * 1px;
-          width: $switch-height - math.div($fib-5, 2) * 1px;
+        height: $switch-height - math.div($fib-5, 2) * 1px;
+        width: $switch-height - math.div($fib-5, 2) * 1px;
       }
     }
   }
@@ -159,8 +160,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     background-color: var(--color-background-disabled);
 
     &::before {
-        background-color: var(--color-background-disabled);
-        border: 2px solid var(--color-text-disabled);
+      background-color: var(--color-background-disabled);
+      border: 2px solid var(--color-text-disabled);
     }
   }
 

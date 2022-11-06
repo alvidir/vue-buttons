@@ -1,63 +1,69 @@
 <template>
   <div id="app">
     <div class="demo-item">
-      <submit-button @submit="load"
-                    :loading="loading"
-                    :disabled="disabled"
-                    :large="large">
+      <submit-button
+        @submit="load"
+        :loading="loading"
+        :disabled="disabled"
+        :large="large"
+      >
         click me
+      </submit-button>
+      <submit-button>
+        <i class="bx bxs-bulb"></i>
+        hello world madafacs
       </submit-button>
     </div>
     <div class="demo-item">
-      <regular-button @click="disable"
-                      :disabled="disabled"
-                      :large="large">
+      <regular-button @click="disable" :disabled="disabled" :large="large">
         click me
       </regular-button>
     </div>
     <div class="demo-item">
-      <switch-button @switch="changeSize"
-                     :disabled="disabled"
-                     :checked="large"
-                     :large="large">
+      <switch-button
+        @switch="changeSize"
+        :disabled="disabled"
+        :checked="large"
+        :large="large"
+      >
       </switch-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'ServeDev',
+  name: "ServeDev",
   data() {
     return {
       loading: false,
       disabled: false,
       large: false,
-    }
+    };
   },
 
   methods: {
     load() {
-      this.loading = true
-      setTimeout(() => this.loading = false, 5000)
+      this.loading = true;
+      setTimeout(() => (this.loading = false), 5000);
     },
 
     disable() {
-      this.disabled = true
-      setTimeout(() => this.disabled = false, 5000)
+      this.disabled = true;
+      setTimeout(() => (this.disabled = false), 5000);
     },
 
     changeSize(value: boolean) {
-      console.log(value)
-      this.large = value
-    }
+      console.log(value);
+      this.large = value;
+    },
   },
 
   mounted() {
-    setTimeout(() => this.large = true, 1000)
-  }
+    setTimeout(() => (this.large = true), 1000);
+  },
 });
 </script>
 
@@ -65,11 +71,11 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 * {
-  @extend .theme-light;
+  @extend .theme-dark;
 
   margin: 0;
   padding: 0;
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
 }
 
 #app {

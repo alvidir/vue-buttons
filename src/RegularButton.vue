@@ -1,22 +1,22 @@
 <template>
-  <button class="regular round-corners fib-5"
-          :class="{large: large,
-                   disabled: disabled}"
-          @click="onClick">
+  <button
+    class="regular round-corners fib-5"
+    :class="{ large: large, disabled: disabled }"
+    @click="onClick"
+  >
     <slot></slot>
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
-const CLICK_EVENT_NAME = "click"
+const CLICK_EVENT_NAME = "click";
 
 export default defineComponent({
   name: "RegularButton",
   emits: [CLICK_EVENT_NAME],
-  components: {},
-  
+
   props: {
     disabled: Boolean,
     large: Boolean,
@@ -25,20 +25,20 @@ export default defineComponent({
   methods: {
     onClick() {
       if (this.disabled) {
-        return
+        return;
       }
 
-      this.$emit(CLICK_EVENT_NAME)
-    }
-  }
-})
+      this.$emit(CLICK_EVENT_NAME);
+    },
+  },
+});
 </script>
 
 <style lang="scss">
 @import "fibonacci-styles";
 
 button.regular {
-  cursor:default;
+  cursor: default;
   position: relative;
   display: flex;
   align-items: center;
@@ -51,9 +51,8 @@ button.regular {
   padding-right: $fib-6 * 1px;
   outline: none;
 
-  transition: height $fib-7 * 0.01s,
-              background $fib-7 * 0.01s,
-              border-color $fib-7 * 0.01s;
+  transition: height $fib-7 * 0.01s, background $fib-7 * 0.01s,
+    border-color $fib-7 * 0.01s;
 
   &.large {
     height: $fib-9 * 1px;
