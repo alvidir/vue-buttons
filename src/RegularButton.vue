@@ -38,7 +38,6 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 button.regular {
-  cursor: default;
   position: relative;
   display: flex;
   align-items: center;
@@ -61,6 +60,7 @@ button.regular {
   &:not(.disabled) {
     &:not(:active):not(.off):hover {
       background: var(--color-button-hover);
+      border-color: var(--color-secondary-text);
     }
 
     border-color: var(--color-text-disabled);

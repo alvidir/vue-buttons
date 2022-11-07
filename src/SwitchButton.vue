@@ -61,10 +61,12 @@ $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
-  cursor: default;
   position: relative;
   height: $switch-height;
   width: $switch-width;
+
+  transition: filter $fib-8 * 0.01s, background $fib-8 * 0.01s,
+    border-color $fib-8 * 0.01s, font-size $fib-7 * 0.01s, height $fib-7 * 0.01s;
 
   label {
     display: flex;
@@ -105,7 +107,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     /* In case the label gets long, the toggle shouldn't shrink. */
     flex-shrink: 0;
-    transition: background-color $fib-7 * 0.01s;
 
     &::before {
       content: "";
@@ -150,14 +151,18 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     }
   }
 
-  &:not(.disabled):hover span::before {
-    background-color: var(--color-button-hover);
+  &:not(.disabled):hover {
+    filter: brightness(110%);
+
+    span::before {
+      background-color: var(--color-button-hover);
+    }
   }
 }
 
 .disabled {
   span {
-    background-color: var(--color-background-disabled);
+    background-color: var(--color-text-disabled);
 
     &::before {
       background-color: var(--color-background-disabled);
@@ -166,7 +171,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   }
 
   input:checked + span {
-    /* Teal background */
+    filter: brightness(80%);
     background-color: v-bind(color);
   }
 }
