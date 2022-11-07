@@ -38,7 +38,6 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 button.regular {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

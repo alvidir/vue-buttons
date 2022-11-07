@@ -52,7 +52,9 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 button.submit {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: $fib-8 * 1px;
   width: 100%;
   border: $fib-1 * 1px solid;

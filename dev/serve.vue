@@ -11,6 +11,7 @@
         :disabled="disabled"
         :large="large"
       >
+        <i class="bx bxs-bulb"></i>
         click me
       </submit-button>
     </div>
