@@ -81,7 +81,10 @@ button.regular {
   i {
     font-size: $fib-7 * 1px;
     color: var(--color-secondary-text);
-    padding-right: $fib-6 * 1px;
+
+    &:first-child {
+      padding-right: $fib-6 * 1px;
+    }
   }
 }
 </style>
