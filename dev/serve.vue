@@ -1,4 +1,8 @@
 <template>
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
   <div id="app">
     <div class="demo-item">
       <submit-button
@@ -12,7 +16,8 @@
     </div>
     <div class="demo-item">
       <regular-button @click="disable" :disabled="disabled" :large="large">
-        click me
+        <i class="bx bxs-cheese"></i>
+        <label>click me &#9660;</label>
       </regular-button>
     </div>
     <div class="demo-item">
