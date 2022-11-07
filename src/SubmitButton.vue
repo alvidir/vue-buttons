@@ -83,12 +83,14 @@ button.submit {
     border-color: var(--color-text-disabled);
     background: var(--color-background-disabled);
     color: var(--color-text-disabled);
+
+    i {
+      color: var(--color-text-disabled);
+    }
   }
 
   i {
     font-size: $fib-7 * 1px;
-    color: var(--color-secondary-text);
-
     &:first-child {
       padding-right: $fib-6 * 1px;
     }
