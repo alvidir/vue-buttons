@@ -9,10 +9,6 @@
       >
         click me
       </submit-button>
-      <submit-button>
-        <i class="bx bxs-bulb"></i>
-        hello world madafacs
-      </submit-button>
     </div>
     <div class="demo-item">
       <regular-button @click="disable" :disabled="disabled" :large="large">
