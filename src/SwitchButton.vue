@@ -65,8 +65,9 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   height: $switch-height;
   width: $switch-width;
 
-  transition: filter $fib-8 * 0.01s, background $fib-8 * 0.01s,
-    border-color $fib-8 * 0.01s, font-size $fib-7 * 0.01s, height $fib-7 * 0.01s;
+  transition: filter $default-duration, background $default-duration,
+    border-color $default-duration, font-size $default-duration,
+    height $default-duration;
 
   label {
     display: flex;
@@ -103,7 +104,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     /* Make the container element rounded */
     border-radius: $switch-height;
-    background-color: var(--color-text-disabled);
+    background-color: var(--color-border);
 
     /* In case the label gets long, the toggle shouldn't shrink. */
     flex-shrink: 0;
@@ -122,7 +123,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       background-color: var(--color-button);
 
       transition: transform $fib-8 * 0.01s;
-      border: 2px solid var(--color-secondary-text);
+      border: 2px solid var(--color-text-disabled);
     }
   }
 
@@ -151,10 +152,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     }
   }
 
-  &:not(.disabled):hover {
-    filter: brightness(110%);
-
-    span::before {
+  &:not(.disabled):hover span {
+    &::before {
       background-color: var(--color-button-hover);
     }
   }
@@ -162,11 +161,11 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
 .disabled {
   span {
-    background-color: var(--color-text-disabled);
+    background-color: var(--color-border-disabled);
 
     &::before {
-      background-color: var(--color-background-disabled);
-      border: 2px solid var(--color-text-disabled);
+      background-color: var(--color-button-disabled);
+      border: 2px solid var(--color-border-disabled);
     }
   }
 

@@ -34,6 +34,10 @@ export default defineComponent({
     large: Boolean,
     loading: Boolean,
     disabled: Boolean,
+    color: {
+      type: String,
+      default: "var(--color-green)",
+    },
   },
 
   methods: {
@@ -64,8 +68,9 @@ button.submit {
   padding-right: $fib-7 * 1px;
   outline: none;
 
-  transition: filter $fib-8 * 0.01s, background $fib-8 * 0.01s,
-    border-color $fib-8 * 0.01s, font-size $fib-7 * 0.01s, height $fib-7 * 0.01s;
+  transition: filter $default-duration, background $default-duration,
+    border-color $default-duration, font-size $default-duration,
+    height $default-duration;
 
   &.large {
     height: $fib-9 * 1px !important;
@@ -77,13 +82,13 @@ button.submit {
       filter: brightness(110%);
     }
 
-    border-color: var(--color-green);
-    background: var(--color-green);
+    border-color: v-bind(color);
+    background: v-bind(color);
   }
 
   &.disabled {
-    border-color: var(--color-text-disabled);
-    background: var(--color-background-disabled);
+    border-color: var(--color-border-disabled);
+    background: var(--color-button-disabled);
     color: var(--color-text-disabled);
 
     i {

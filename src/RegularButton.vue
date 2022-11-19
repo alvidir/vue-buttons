@@ -1,7 +1,7 @@
 <template>
   <button
     class="regular round-corners fib-5"
-    :class="{ large: large, disabled: disabled }"
+    :class="{ large: large, disabled: disabled, active: active }"
     @click="onClick"
   >
     <slot></slot>
@@ -20,6 +20,7 @@ export default defineComponent({
   props: {
     disabled: Boolean,
     large: Boolean,
+    active: Boolean,
   },
 
   methods: {
@@ -49,8 +50,8 @@ button.regular {
   padding-right: $fib-6 * 1px;
   outline: none;
 
-  transition: height $fib-7 * 0.01s, background $fib-7 * 0.01s,
-    border-color $fib-7 * 0.01s;
+  transition: height $default-duration, background $default-duration,
+    border-color $default-duration;
 
   &.large {
     height: $fib-9 * 1px;
@@ -59,17 +60,22 @@ button.regular {
   &:not(.disabled) {
     &:not(:active):not(.off):hover {
       background: var(--color-button-hover);
-      border-color: var(--color-secondary-text);
+      border-color: var(--color-border-hover);
     }
 
-    border-color: var(--color-text-disabled);
+    &.active {
+      background: var(--color-button-active) !important;
+      border-color: var(--color-border-active) !important;
+    }
+
+    border-color: var(--color-border);
     background: var(--color-button);
-    color: var(--color-text);
+    color: var(--color-text-primary);
   }
 
   &.disabled {
-    border-color: var(--color-text-disabled);
-    background: var(--color-background-disabled);
+    border-color: var(--color-border-disabled);
+    background: var(--color-button-disabled);
     color: var(--color-text-disabled);
 
     i {
@@ -79,7 +85,7 @@ button.regular {
 
   i {
     font-size: $fib-7 * 1px;
-    color: var(--color-secondary-text);
+    color: var(--color-text-secondary);
 
     &:first-child {
       padding-right: $fib-6 * 1px;
