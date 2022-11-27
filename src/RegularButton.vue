@@ -48,6 +48,7 @@ button.regular {
   border: $fib-1 * 1px solid;
   padding-left: $fib-6 * 1px;
   padding-right: $fib-6 * 1px;
+  white-space: nowrap;
   outline: none;
 
   transition: height $default-duration, background $default-duration,
@@ -58,7 +59,7 @@ button.regular {
   }
 
   &:not(.disabled) {
-    &:not(:active):not(.off):hover {
+    &:not(.off):hover {
       background: var(--color-button-hover);
       border-color: var(--color-border-hover);
     }

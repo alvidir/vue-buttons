@@ -66,6 +66,7 @@ button.submit {
   font-size: medium;
   padding-left: $fib-7 * 1px;
   padding-right: $fib-7 * 1px;
+  white-space: nowrap;
   outline: none;
 
   transition: filter $default-duration, background $default-duration,
@@ -78,7 +79,7 @@ button.submit {
   }
 
   &:not(.disabled) {
-    &:not(:active):not(.off):hover {
+    &:not(.off):hover {
       filter: brightness(110%);
     }
 

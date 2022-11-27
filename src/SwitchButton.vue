@@ -114,7 +114,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       position: absolute;
 
       /* Move a little bit the inner circle to the right */
-      left: $fib-1 * 1px;
       height: $switch-height - math.div($fib-5, 2) * 1px;
       width: $switch-height - math.div($fib-5, 2) * 1px;
 

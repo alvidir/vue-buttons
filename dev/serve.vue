@@ -19,8 +19,8 @@
         </div>
         <div class="demo-item">
           <regular-button
-            @click="disable"
-            :active="loading"
+            @click="onRegularButtonClick"
+            :active="active"
             :disabled="disabled"
             :large="large"
           >
@@ -30,9 +30,9 @@
         </div>
         <div class="demo-item">
           <switch-button
-            @switch="changeSize"
+            @switch="onSwitchButtonClick"
             :disabled="disabled"
-            :checked="large"
+            :checked="!disabled"
             :large="large"
           >
           </switch-button>
@@ -52,8 +52,8 @@
         </div>
         <div class="demo-item">
           <regular-button
-            @click="disable"
-            :active="loading"
+            @click="onRegularButtonClick"
+            :active="active"
             :disabled="disabled"
             :large="large"
           >
@@ -63,9 +63,9 @@
         </div>
         <div class="demo-item">
           <switch-button
-            @switch="changeSize"
+            @switch="onSwitchButtonClick"
             :disabled="disabled"
-            :checked="large"
+            :checked="!disabled"
             :large="large"
           >
           </switch-button>
@@ -87,8 +87,8 @@
         </div>
         <div class="demo-item">
           <regular-button
-            @click="disable"
-            :active="loading"
+            @click="onRegularButtonClick"
+            :active="active"
             :disabled="disabled"
             :large="large"
           >
@@ -98,9 +98,9 @@
         </div>
         <div class="demo-item">
           <switch-button
-            @switch="changeSize"
+            @switch="onSwitchButtonClick"
             :disabled="disabled"
-            :checked="large"
+            :checked="!disabled"
             :large="large"
           >
           </switch-button>
@@ -120,8 +120,8 @@
         </div>
         <div class="demo-item">
           <regular-button
-            @click="disable"
-            :active="loading"
+            @click="onRegularButtonClick"
+            :active="active"
             :disabled="disabled"
             :large="large"
           >
@@ -131,9 +131,9 @@
         </div>
         <div class="demo-item">
           <switch-button
-            @switch="changeSize"
+            @switch="onSwitchButtonClick"
             :disabled="disabled"
-            :checked="large"
+            :checked="!disabled"
             :large="large"
           >
           </switch-button>
@@ -152,6 +152,7 @@ export default defineComponent({
     return {
       loading: false,
       disabled: false,
+      active: false,
       large: false,
     };
   },
@@ -162,14 +163,15 @@ export default defineComponent({
       setTimeout(() => (this.loading = false), 5000);
     },
 
-    disable() {
-      this.disabled = true;
-      setTimeout(() => (this.disabled = false), 5000);
+    onRegularButtonClick() {
+      this.active = !this.active;
     },
 
-    changeSize(value: boolean) {
-      console.log(value);
-      this.large = value;
+    onSwitchButtonClick() {
+      this.disabled = true;
+      setTimeout(() => {
+        this.disabled = false;
+      }, 3000);
     },
   },
 
