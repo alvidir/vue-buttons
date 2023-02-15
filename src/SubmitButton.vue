@@ -56,6 +56,8 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 button.submit {
+  @extend .smooth;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,9 +71,7 @@ button.submit {
   white-space: nowrap;
   outline: none;
 
-  transition: filter $default-duration, background $default-duration,
-    border-color $default-duration, font-size $default-duration,
-    height $default-duration;
+  transition-property: filter, background, border-color, font-size, height;
 
   &.large {
     height: $fib-9 * 1px !important;

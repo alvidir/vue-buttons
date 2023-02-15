@@ -61,13 +61,13 @@ $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
+  @extend .smooth;
+
   position: relative;
   height: $switch-height;
   width: $switch-width;
 
-  transition: filter $default-duration, background $default-duration,
-    border-color $default-duration, font-size $default-duration,
-    height $default-duration;
+  transition-property: filter, background, border-color, font-size, height;
 
   label {
     display: flex;

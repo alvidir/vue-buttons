@@ -1,6 +1,6 @@
 <template>
   <button
-    class="regular round-corners fib-5"
+    class="regular round-corners"
     :class="{ large: large, disabled: disabled, active: active }"
     @click="onClick"
   >
@@ -39,6 +39,8 @@ export default defineComponent({
 @import "fibonacci-styles";
 
 button.regular {
+  @extend .smooth;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,8 +53,7 @@ button.regular {
   white-space: nowrap;
   outline: none;
 
-  transition: height $default-duration, background $default-duration,
-    border-color $default-duration;
+  transition-property: height, background, border-color;
 
   &.large {
     height: $fib-9 * 1px;
