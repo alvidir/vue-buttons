@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults, defineProps, defineEmits, watch, ref } from "vue";
+import { withDefaults, defineProps, defineEmits } from "vue";
 
 interface Props {
   checked: boolean;
