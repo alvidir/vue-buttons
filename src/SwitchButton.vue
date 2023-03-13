@@ -3,53 +3,45 @@
     <label>
       <input
         type="checkbox"
-        v-model="model"
+        :checked="checked"
         :disabled="disabled"
-        @change="onSwitchClicked"
+        @change="onClick"
       />
       <span></span>
     </label>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { withDefaults, defineProps, defineEmits, watch, ref } from "vue";
 
-const SWITCH_EVENT_NAME = "switch";
+interface Props {
+  checked: boolean;
+  disabled: boolean;
+  large: boolean;
+  color: string;
+}
 
-export default defineComponent({
-  name: "SwitchButton",
-  emits: [SWITCH_EVENT_NAME],
-  components: {},
-
-  props: {
-    checked: Boolean,
-    disabled: Boolean,
-    large: Boolean,
-    color: {
-      type: String,
-      default: "var(--color-green)",
-    },
-  },
-
-  watch: {
-    checked(value: boolean) {
-      this.model = value;
-    },
-  },
-
-  data() {
-    return {
-      model: this.checked,
-    };
-  },
-
-  methods: {
-    onSwitchClicked() {
-      if (!this.disabled) this.$emit(SWITCH_EVENT_NAME, this.model);
-    },
-  },
+const props = withDefaults(defineProps<Props>(), {
+  large: false,
+  loading: false,
+  disabled: false,
+  color: "var(--color-accent)",
 });
+
+interface Events {
+  (e: "switch", payload: Event): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: Event) => {
+  if (props.disabled) {
+    return;
+  }
+
+  emit("switch", payload);
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

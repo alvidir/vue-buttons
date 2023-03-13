@@ -8,31 +8,34 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { withDefaults, defineProps, defineEmits } from "vue";
 
-const CLICK_EVENT_NAME = "click";
+interface Props {
+  disabled: boolean;
+  large: boolean;
+  active: boolean;
+}
 
-export default defineComponent({
-  name: "RegularButton",
-  emits: [CLICK_EVENT_NAME],
-
-  props: {
-    disabled: Boolean,
-    large: Boolean,
-    active: Boolean,
-  },
-
-  methods: {
-    onClick() {
-      if (this.disabled) {
-        return;
-      }
-
-      this.$emit(CLICK_EVENT_NAME);
-    },
-  },
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+  large: false,
+  active: true,
 });
+
+interface Events {
+  (e: "click", payload: MouseEvent): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: MouseEvent) => {
+  if (props.disabled) {
+    return;
+  }
+
+  emit("click", payload);
+};
 </script>
 
 <style lang="scss">

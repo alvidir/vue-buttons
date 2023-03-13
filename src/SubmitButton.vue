@@ -17,39 +17,37 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { withDefaults, defineProps, defineEmits } from "vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-const SUBMIT_EVENT_NAME = "submit";
+interface Props {
+  large: boolean;
+  loading: boolean;
+  disabled: boolean;
+  color: string;
+}
 
-export default defineComponent({
-  name: "SubmitButton",
-  emits: [SUBMIT_EVENT_NAME],
-  components: {
-    PulseLoader,
-  },
-
-  props: {
-    large: Boolean,
-    loading: Boolean,
-    disabled: Boolean,
-    color: {
-      type: String,
-      default: "var(--color-green)",
-    },
-  },
-
-  methods: {
-    onClick() {
-      if (this.disabled || this.loading) {
-        return;
-      }
-
-      this.$emit(SUBMIT_EVENT_NAME);
-    },
-  },
+const props = withDefaults(defineProps<Props>(), {
+  large: false,
+  loading: false,
+  disabled: false,
+  color: "var(--color-green)",
 });
+
+interface Events {
+  (e: "submit", payload: MouseEvent): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: MouseEvent) => {
+  if (props.disabled || props.loading) {
+    return;
+  }
+
+  emit("submit", payload);
+};
 </script>
 
 <style lang="scss">
