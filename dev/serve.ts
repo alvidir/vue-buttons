@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import Dev from "./serve.vue";
+import Dev from "./ServeDev.vue";
 import include from "../src/main";
 
 const app = createApp(Dev);
