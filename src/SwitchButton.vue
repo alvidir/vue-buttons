@@ -16,10 +16,10 @@
 import { withDefaults, defineProps, defineEmits } from "vue";
 
 interface Props {
-  checked: boolean;
-  disabled: boolean;
-  large: boolean;
-  color: string;
+  checked?: boolean;
+  disabled?: boolean;
+  large?: boolean;
+  color?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {

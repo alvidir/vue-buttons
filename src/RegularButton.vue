@@ -12,9 +12,9 @@
 import { withDefaults, defineProps, defineEmits } from "vue";
 
 interface Props {
-  disabled: boolean;
-  large: boolean;
-  active: boolean;
+  disabled?: boolean;
+  large?: boolean;
+  active?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {

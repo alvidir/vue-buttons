@@ -22,10 +22,10 @@ import { withDefaults, defineProps, defineEmits } from "vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 interface Props {
-  large: boolean;
-  loading: boolean;
-  disabled: boolean;
-  color: string;
+  large?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
+  color?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
