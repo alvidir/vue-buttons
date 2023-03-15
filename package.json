@@ -2,7 +2,7 @@
   "name": "vue-buttons",
   "version": "2.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve dev/serve.ts",
+    "serve": "vue-cli-service serve dev/main.ts",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
