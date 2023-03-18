@@ -1,17 +1,3 @@
-<template>
-  <div class="switch-button" :class="{ large: large, disabled: disabled }">
-    <label>
-      <input
-        type="checkbox"
-        :checked="checked"
-        :disabled="disabled"
-        @change="onClick"
-      />
-      <span></span>
-    </label>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { withDefaults, defineProps, defineEmits } from "vue";
 
@@ -23,9 +9,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  large: false,
-  loading: false,
-  disabled: false,
   color: "var(--color-accent)",
 });
 
@@ -44,22 +27,32 @@ const onClick = (payload: Event) => {
 };
 </script>
 
+<template>
+  <div class="switch-button" :class="{ large: large, disabled: disabled }">
+    <label>
+      <input
+        type="checkbox"
+        :checked="checked"
+        :disabled="disabled"
+        @change="onClick"
+      />
+      <span></span>
+    </label>
+  </div>
+</template>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @use "sass:math";
-@import "fibonacci-styles";
+@import "styles.scss";
 
 $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
-  @extend .smooth;
-
   position: relative;
   height: $switch-height;
   width: $switch-width;
-
-  transition-property: filter, background, border-color, font-size, height;
 
   label {
     display: flex;

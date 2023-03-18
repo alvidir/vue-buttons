@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import DemoBlock from "./DemoBlock.vue";
+</script>
+
 <template>
   <link
     href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -22,10 +26,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import DemoBlock from "./DemoBlock.vue";
-</script>
 
 <style lang="scss">
 @import "fibonacci-styles";
