@@ -7,9 +7,7 @@ interface Props {
   active?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  active: true,
-});
+const props = defineProps<Props>();
 
 interface Events {
   (e: "click", payload: MouseEvent): void;
