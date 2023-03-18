@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withDefaults, defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 interface Props {
   disabled?: boolean;
