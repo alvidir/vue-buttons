@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { withDefaults, defineProps, defineEmits } from "vue";
-
 interface Props {
   checked?: boolean;
   disabled?: boolean;

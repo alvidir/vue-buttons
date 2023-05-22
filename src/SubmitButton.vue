@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withDefaults, defineProps, defineEmits, computed } from "vue";
+import { computed } from "vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 interface Props {
