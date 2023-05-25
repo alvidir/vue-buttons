@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 const loading = ref(false);
 const disabled = ref(false);
 const active = ref(false);
 const large = ref(false);
+
+watch(disabled, (currentValue) => {
+  if (!currentValue) return;
+
+  setTimeout(() => {
+    disabled.value = false;
+  }, 3000);
+});
 
 const load = () => {
   loading.value = true;
@@ -13,13 +21,6 @@ const load = () => {
 
 const onRegularButtonClick = () => {
   active.value = !active.value;
-};
-
-const onSwitchButtonClick = () => {
-  disabled.value = true;
-  setTimeout(() => {
-    disabled.value = false;
-  }, 3000);
 };
 
 onMounted(() => {
@@ -51,12 +52,7 @@ onMounted(() => {
     </regular-button>
   </div>
   <div class="demo-item">
-    <switch-button
-      @switch="onSwitchButtonClick"
-      :disabled="disabled"
-      :checked="!disabled"
-      :large="large"
-    >
+    <switch-button v-model="disabled" :disabled="disabled" :large="large">
     </switch-button>
   </div>
 </template>

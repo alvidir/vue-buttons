@@ -1,27 +1,28 @@
 <script setup lang="ts">
 interface Props {
-  checked?: boolean;
+  modelValue: boolean;
   disabled?: boolean;
   large?: boolean;
   color?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  checked: false,
   color: "var(--color-accent)",
 });
 
 interface Events {
-  (e: "switch", payload: Event): void;
+  (e: "update:modelValue", payload: boolean): void;
 }
 
 const emit = defineEmits<Events>();
 
-const onClick = (payload: Event) => {
+const onClick = () => {
   if (props.disabled) {
     return;
   }
 
-  emit("switch", payload);
+  emit("update:modelValue", !props.modelValue);
 };
 </script>
 
@@ -30,7 +31,7 @@ const onClick = (payload: Event) => {
     <label>
       <input
         type="checkbox"
-        :checked="checked"
+        :checked="modelValue"
         :disabled="disabled"
         @change="onClick"
       />
