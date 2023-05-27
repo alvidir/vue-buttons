@@ -12,17 +12,19 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 interface Events {
+  (e: "change", payload: Event): void;
   (e: "update:modelValue", payload: boolean): void;
 }
 
 const emit = defineEmits<Events>();
 
-const onClick = () => {
+const onClick = (payload: Event) => {
   if (props.disabled) {
     return;
   }
 
   emit("update:modelValue", !props.modelValue);
+  emit("change", payload);
 };
 </script>
 
