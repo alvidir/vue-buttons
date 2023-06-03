@@ -68,7 +68,7 @@ button.submit {
 
   &:not(.disabled) {
     &:not(.off):hover {
-      filter: brightness(110%);
+      background: color-mix(in srgb, v-bind(color) 90%, white);
     }
 
     border-color: v-bind(color);
