@@ -51,8 +51,6 @@ $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
-  @extend .slower-fade;
-
   position: relative;
   height: $switch-height;
   width: $switch-width;
@@ -85,8 +83,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   }
 
   span {
-    @extend .slower-fade;
-
     /* Vertically center the inner circle */
     position: relative;
     height: $switch-height;
@@ -100,8 +96,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     flex-shrink: 0;
 
     &::before {
-      @extend .slower-fade;
-
       content: "";
       position: absolute;
 

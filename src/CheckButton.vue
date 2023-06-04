@@ -38,6 +38,7 @@ const onChange = (payload: Event) => {
         @change="onChange"
       />
       <span></span>
+      <slot></slot>
     </label>
   </div>
 </template>
@@ -50,8 +51,6 @@ const onChange = (payload: Event) => {
 $check-height: $fib-7 * 1px !default;
 
 .check-button {
-  @extend .slower-fade;
-
   position: relative;
   height: $check-height;
   width: fit-content;
@@ -81,8 +80,6 @@ $check-height: $fib-7 * 1px !default;
   }
 
   span {
-    @extend .medium-fade;
-
     border-radius: $check-height;
     height: $check-height - math.div($fib-7, 2) * 1px;
     width: $check-height - math.div($fib-7, 2) * 1px;
@@ -107,6 +104,8 @@ $check-height: $fib-7 * 1px !default;
 }
 
 .disabled {
+  color: var(--color-text-disabled);
+
   span {
     background: var(--color-button-disabled);
     border: 5px solid var(--color-border-disabled);

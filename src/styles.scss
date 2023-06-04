@@ -3,8 +3,8 @@
 button {
   &.regular,
   &.submit {
-    transition: filter $medium-fade, background $medium-fade,
-      border-color $medium-fade, font-size $slower-fade, height $slower-fade;
+    transition: background $medium-fade, border-color $medium-fade,
+      font-size $slower-fade, height $slower-fade;
   }
 
   &.regular,
@@ -34,5 +34,16 @@ button {
         padding-right: $fib-6 * 1px;
       }
     }
+  }
+}
+
+.switch-button,
+.check-button {
+  transition: height $slower-fade, width $slower-fade;
+
+  span,
+  span::before {
+    transition: background $medium-fade, border-color $medium-fade,
+      height $slower-fade, width $slower-fade, flex-basis $slower-fade;
   }
 }
