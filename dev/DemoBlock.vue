@@ -58,6 +58,7 @@ onMounted(() => {
   </div>
   <div class="demo-item">
     <check-button v-model="radioModel" :disabled="switchModel" :large="large">
+      <template #after>hello world</template>
     </check-button>
   </div>
 </template>

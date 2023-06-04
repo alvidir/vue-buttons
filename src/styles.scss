@@ -2,8 +2,7 @@
 
 button {
   &.regular,
-  &.submit,
-  &.switch {
+  &.submit {
     transition: filter $medium-fade, background $medium-fade,
       border-color $medium-fade, font-size $slower-fade, height $slower-fade;
   }

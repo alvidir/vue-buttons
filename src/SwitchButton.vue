@@ -51,6 +51,8 @@ $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
 
 .switch-button {
+  @extend .slower-fade;
+
   position: relative;
   height: $switch-height;
   width: $switch-width;
@@ -83,6 +85,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   }
 
   span {
+    @extend .slower-fade;
+
     /* Vertically center the inner circle */
     position: relative;
     height: $switch-height;
@@ -96,6 +100,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     flex-shrink: 0;
 
     &::before {
+      @extend .slower-fade;
+
       content: "";
       position: absolute;
 
@@ -107,7 +113,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       border-radius: 9999px;
       background: var(--color-button);
 
-      transition: transform $fib-8 * 0.01s;
       border: 2px solid var(--color-text-disabled);
     }
   }
@@ -116,8 +121,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     $switch-height: $fib-8 * 1px;
     $switch-width: $FIB_RATIO * $switch-height;
 
-    min-height: $switch-height !important;
-    min-width: $switch-width !important;
+    height: $switch-height;
+    width: $switch-width;
 
     input {
       &:checked + span::before {
