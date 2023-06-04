@@ -44,7 +44,10 @@ button {
   span,
   span::before {
     transition: background $medium-fade, border-color $medium-fade,
-      color $medium-fade, height $slower-fade, width $slower-fade,
-      flex-basis $slower-fade;
+      height $slower-fade, width $slower-fade, flex-basis $slower-fade;
+  }
+
+  label {
+    transition: color $medium-fade;
   }
 }
