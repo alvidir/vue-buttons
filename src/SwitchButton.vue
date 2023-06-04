@@ -18,7 +18,7 @@ interface Events {
 
 const emit = defineEmits<Events>();
 
-const onClick = (payload: Event) => {
+const onChange = (payload: Event) => {
   if (props.disabled) {
     return;
   }
@@ -35,7 +35,7 @@ const onClick = (payload: Event) => {
         type="checkbox"
         :checked="modelValue"
         :disabled="disabled"
-        @change="onClick"
+        @change="onChange"
       />
       <span></span>
     </label>
@@ -73,7 +73,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     &:checked + span {
       /* Teal background */
-      background-color: v-bind(color);
+      background: v-bind(color);
     }
 
     &:checked + span::before {
@@ -90,7 +90,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     /* Make the container element rounded */
     border-radius: $switch-height;
-    background-color: var(--color-border);
+    background: var(--color-border);
 
     /* In case the label gets long, the toggle shouldn't shrink. */
     flex-shrink: 0;
@@ -105,7 +105,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
       /* Make the inner circle fully rounded */
       border-radius: 9999px;
-      background-color: var(--color-button);
+      background: var(--color-button);
 
       transition: transform $fib-8 * 0.01s;
       border: 2px solid var(--color-text-disabled);
@@ -139,24 +139,24 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
   &:not(.disabled):hover span {
     &::before {
-      background-color: var(--color-button-hover);
+      background: var(--color-button-hover);
     }
   }
 }
 
 .disabled {
   span {
-    background-color: var(--color-border-disabled);
+    background: var(--color-border-disabled);
 
     &::before {
-      background-color: var(--color-button-disabled);
+      background: var(--color-button-disabled);
       border: 2px solid var(--color-border-disabled);
     }
   }
 
   input:checked + span {
     filter: brightness(80%);
-    background-color: v-bind(color);
+    background: v-bind(color);
   }
 }
 </style>

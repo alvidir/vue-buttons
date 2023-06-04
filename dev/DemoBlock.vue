@@ -2,15 +2,16 @@
 import { ref, onMounted, watch } from "vue";
 
 const loading = ref(false);
-const disabled = ref(false);
+const switchModel = ref(false);
+const radioModel = ref(false);
 const active = ref(false);
 const large = ref(false);
 
-watch(disabled, (currentValue) => {
+watch(switchModel, (currentValue) => {
   if (!currentValue) return;
 
   setTimeout(() => {
-    disabled.value = false;
+    switchModel.value = false;
   }, 3000);
 });
 
@@ -33,7 +34,7 @@ onMounted(() => {
     <submit-button
       @submit="load"
       :loading="loading"
-      :disabled="disabled"
+      :disabled="switchModel"
       :large="large"
     >
       <i class="bx bxs-bulb"></i>
@@ -44,7 +45,7 @@ onMounted(() => {
     <regular-button
       @click="onRegularButtonClick"
       :active="active"
-      :disabled="disabled"
+      :disabled="switchModel"
       :large="large"
     >
       <i class="bx bxs-cheese"></i>
@@ -52,8 +53,12 @@ onMounted(() => {
     </regular-button>
   </div>
   <div class="demo-item">
-    <switch-button v-model="disabled" :disabled="disabled" :large="large">
+    <switch-button v-model="switchModel" :disabled="radioModel" :large="large">
     </switch-button>
+  </div>
+  <div class="demo-item">
+    <check-button v-model="radioModel" :disabled="switchModel" :large="large">
+    </check-button>
   </div>
 </template>
 
