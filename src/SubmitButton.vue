@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import { computed } from "vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+
+interface Props {
+  large?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
+  color?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  color: "var(--color-green)",
+});
+
+interface Events {
+  (e: "submit", payload: MouseEvent): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: MouseEvent) => {
+  if (props.disabled || props.loading) {
+    return;
+  }
+
+  emit("submit", payload);
+};
+
+const spinnerColor = computed((): string => {
+  return props.disabled ? "var(--color-text-disabled)" : "var(--color-white)";
+});
+</script>
+
 <template>
   <button
     class="submit round-corners fib-5"
@@ -8,70 +42,24 @@
     <div v-else>
       <slot name="spinner">
         <pulse-loader
+          class="pulse-loader"
           :size="'8px'"
           :radius="'5px'"
-          color="#ffffff80"
+          :color="spinnerColor"
         ></pulse-loader>
       </slot>
     </div>
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
-
-const SUBMIT_EVENT_NAME = "submit";
-
-export default defineComponent({
-  name: "SubmitButton",
-  emits: [SUBMIT_EVENT_NAME],
-  components: {
-    PulseLoader,
-  },
-
-  props: {
-    large: Boolean,
-    loading: Boolean,
-    disabled: Boolean,
-    color: {
-      type: String,
-      default: "var(--color-green)",
-    },
-  },
-
-  methods: {
-    onClick() {
-      if (this.disabled || this.loading) {
-        return;
-      }
-
-      this.$emit(SUBMIT_EVENT_NAME);
-    },
-  },
-});
-</script>
-
 <style lang="scss">
-@import "fibonacci-styles";
+@import "styles.scss";
 
 button.submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: $fib-8 * 1px;
   width: 100%;
-  border: $fib-1 * 1px solid;
   color: var(--color-white);
-  font-size: medium;
   padding-left: $fib-7 * 1px;
   padding-right: $fib-7 * 1px;
-  white-space: nowrap;
-  outline: none;
-
-  transition: filter $default-duration, background $default-duration,
-    border-color $default-duration, font-size $default-duration,
-    height $default-duration;
 
   &.large {
     height: $fib-9 * 1px !important;
@@ -80,28 +68,15 @@ button.submit {
 
   &:not(.disabled) {
     &:not(.off):hover {
-      filter: brightness(110%);
+      background: color-mix(in srgb, v-bind(color) 85%, white);
     }
 
     border-color: v-bind(color);
     background: v-bind(color);
   }
 
-  &.disabled {
-    border-color: var(--color-border-disabled);
-    background: var(--color-button-disabled);
-    color: var(--color-text-disabled);
-
-    i {
-      color: var(--color-text-disabled);
-    }
-  }
-
-  i {
-    font-size: $fib-7 * 1px;
-    &:first-child {
-      padding-right: $fib-6 * 1px;
-    }
+  .pulse-loader {
+    opacity: $fib-9 * 1%;
   }
 }
 </style>

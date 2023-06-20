@@ -1,6 +1,30 @@
+<script setup lang="ts">
+interface Props {
+  disabled?: boolean;
+  large?: boolean;
+  active?: boolean;
+}
+
+const props = defineProps<Props>();
+
+interface Events {
+  (e: "click", payload: MouseEvent): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: MouseEvent) => {
+  if (props.disabled) {
+    return;
+  }
+
+  emit("click", payload);
+};
+</script>
+
 <template>
   <button
-    class="regular round-corners fib-5"
+    class="regular round-corners"
     :class="{ large: large, disabled: disabled, active: active }"
     @click="onClick"
   >
@@ -8,51 +32,13 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-const CLICK_EVENT_NAME = "click";
-
-export default defineComponent({
-  name: "RegularButton",
-  emits: [CLICK_EVENT_NAME],
-
-  props: {
-    disabled: Boolean,
-    large: Boolean,
-    active: Boolean,
-  },
-
-  methods: {
-    onClick() {
-      if (this.disabled) {
-        return;
-      }
-
-      this.$emit(CLICK_EVENT_NAME);
-    },
-  },
-});
-</script>
-
 <style lang="scss">
-@import "fibonacci-styles";
+@import "styles.scss";
 
 button.regular {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: fit-content;
-  height: $fib-8 * 1px;
-  font-size: medium;
-  border: $fib-1 * 1px solid;
   padding-left: $fib-6 * 1px;
   padding-right: $fib-6 * 1px;
-  white-space: nowrap;
-  outline: none;
-
-  transition: height $default-duration, background $default-duration,
-    border-color $default-duration;
 
   &.large {
     height: $fib-9 * 1px;
@@ -74,23 +60,8 @@ button.regular {
     color: var(--color-text-primary);
   }
 
-  &.disabled {
-    border-color: var(--color-border-disabled);
-    background: var(--color-button-disabled);
-    color: var(--color-text-disabled);
-
-    i {
-      color: var(--color-text-disabled);
-    }
-  }
-
   i {
-    font-size: $fib-7 * 1px;
     color: var(--color-text-secondary);
-
-    &:first-child {
-      padding-right: $fib-6 * 1px;
-    }
   }
 }
 </style>
