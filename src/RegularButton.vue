@@ -1,89 +1,67 @@
+<script setup lang="ts">
+interface Props {
+  disabled?: boolean;
+  large?: boolean;
+  active?: boolean;
+}
+
+const props = defineProps<Props>();
+
+interface Events {
+  (e: "click", payload: MouseEvent): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onClick = (payload: MouseEvent) => {
+  if (props.disabled) {
+    return;
+  }
+
+  emit("click", payload);
+};
+</script>
+
 <template>
   <button
-    class="regular round-corners fib-5"
-    :class="{ large: large, disabled: disabled }"
+    class="regular round-corners"
+    :class="{ large: large, disabled: disabled, active: active }"
     @click="onClick"
   >
     <slot></slot>
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-const CLICK_EVENT_NAME = "click";
-
-export default defineComponent({
-  name: "RegularButton",
-  emits: [CLICK_EVENT_NAME],
-
-  props: {
-    disabled: Boolean,
-    large: Boolean,
-  },
-
-  methods: {
-    onClick() {
-      if (this.disabled) {
-        return;
-      }
-
-      this.$emit(CLICK_EVENT_NAME);
-    },
-  },
-});
-</script>
-
 <style lang="scss">
-@import "fibonacci-styles";
+@import "styles.scss";
 
 button.regular {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: fit-content;
-  height: $fib-8 * 1px;
-  font-size: medium;
-  border: $fib-1 * 1px solid;
   padding-left: $fib-6 * 1px;
   padding-right: $fib-6 * 1px;
-  outline: none;
-
-  transition: height $fib-7 * 0.01s, background $fib-7 * 0.01s,
-    border-color $fib-7 * 0.01s;
 
   &.large {
     height: $fib-9 * 1px;
   }
 
   &:not(.disabled) {
-    &:not(:active):not(.off):hover {
+    &:not(.off):hover {
       background: var(--color-button-hover);
-      border-color: var(--color-secondary-text);
+      border-color: var(--color-border-hover);
     }
 
-    border-color: var(--color-text-disabled);
+    &.active {
+      background: var(--color-button-active) !important;
+      border-color: var(--color-border-active) !important;
+    }
+
+    border-color: var(--color-border);
     background: var(--color-button);
-    color: var(--color-text);
-  }
-
-  &.disabled {
-    border-color: var(--color-text-disabled);
-    background: var(--color-background-disabled);
-    color: var(--color-text-disabled);
-
-    i {
-      color: var(--color-text-disabled);
-    }
+    color: var(--color-text-primary);
   }
 
   i {
-    font-size: $fib-7 * 1px;
-    color: var(--color-secondary-text);
-
-    &:first-child {
-      padding-right: $fib-6 * 1px;
-    }
+    color: var(--color-text-secondary);
   }
 }
 </style>
