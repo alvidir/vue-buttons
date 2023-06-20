@@ -1,61 +1,51 @@
+<script setup lang="ts">
+interface Props {
+  modelValue: boolean;
+  disabled?: boolean;
+  large?: boolean;
+  color?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  checked: false,
+  color: "var(--color-accent)",
+});
+
+interface Events {
+  (e: "change", payload: Event): void;
+  (e: "update:modelValue", payload: boolean): void;
+}
+
+const emit = defineEmits<Events>();
+
+const onChange = (payload: Event) => {
+  if (props.disabled) {
+    return;
+  }
+
+  emit("update:modelValue", !props.modelValue);
+  emit("change", payload);
+};
+</script>
+
 <template>
   <div class="switch-button" :class="{ large: large, disabled: disabled }">
     <label>
       <input
         type="checkbox"
-        v-model="model"
+        :checked="modelValue"
         :disabled="disabled"
-        @change="onSwitchClicked"
+        @change="onChange"
       />
       <span></span>
     </label>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-const SWITCH_EVENT_NAME = "switch";
-
-export default defineComponent({
-  name: "SwitchButton",
-  emits: [SWITCH_EVENT_NAME],
-  components: {},
-
-  props: {
-    checked: Boolean,
-    disabled: Boolean,
-    large: Boolean,
-    color: {
-      type: String,
-      default: "var(--color-green)",
-    },
-  },
-
-  watch: {
-    checked(value: boolean) {
-      this.model = value;
-    },
-  },
-
-  data() {
-    return {
-      model: this.checked,
-    };
-  },
-
-  methods: {
-    onSwitchClicked() {
-      if (!this.disabled) this.$emit(SWITCH_EVENT_NAME, this.model);
-    },
-  },
-});
-</script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @use "sass:math";
-@import "fibonacci-styles";
+@import "styles.scss";
 
 $switch-height: $fib-7 * 1px !default;
 $switch-width: $FIB_RATIO * $switch-height !default;
@@ -64,9 +54,6 @@ $switch-width: $FIB_RATIO * $switch-height !default;
   position: relative;
   height: $switch-height;
   width: $switch-width;
-
-  transition: filter $fib-8 * 0.01s, background $fib-8 * 0.01s,
-    border-color $fib-8 * 0.01s, font-size $fib-7 * 0.01s, height $fib-7 * 0.01s;
 
   label {
     display: flex;
@@ -86,7 +73,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     &:checked + span {
       /* Teal background */
-      background-color: v-bind(color);
+      background: v-bind(color);
     }
 
     &:checked + span::before {
@@ -103,7 +90,7 @@ $switch-width: $FIB_RATIO * $switch-height !default;
 
     /* Make the container element rounded */
     border-radius: $switch-height;
-    background-color: var(--color-text-disabled);
+    background: var(--color-border);
 
     /* In case the label gets long, the toggle shouldn't shrink. */
     flex-shrink: 0;
@@ -113,16 +100,14 @@ $switch-width: $FIB_RATIO * $switch-height !default;
       position: absolute;
 
       /* Move a little bit the inner circle to the right */
-      left: $fib-1 * 1px;
       height: $switch-height - math.div($fib-5, 2) * 1px;
       width: $switch-height - math.div($fib-5, 2) * 1px;
 
       /* Make the inner circle fully rounded */
       border-radius: 9999px;
-      background-color: var(--color-button);
+      background: var(--color-button);
 
-      transition: transform $fib-8 * 0.01s;
-      border: 2px solid var(--color-secondary-text);
+      border: 2px solid var(--color-text-disabled);
     }
   }
 
@@ -130,8 +115,8 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     $switch-height: $fib-8 * 1px;
     $switch-width: $FIB_RATIO * $switch-height;
 
-    min-height: $switch-height !important;
-    min-width: $switch-width !important;
+    height: $switch-height;
+    width: $switch-width;
 
     input {
       &:checked + span::before {
@@ -151,28 +136,26 @@ $switch-width: $FIB_RATIO * $switch-height !default;
     }
   }
 
-  &:not(.disabled):hover {
-    filter: brightness(110%);
-
-    span::before {
-      background-color: var(--color-button-hover);
+  &:not(.disabled):hover span {
+    &::before {
+      background: var(--color-button-hover);
     }
   }
 }
 
 .disabled {
   span {
-    background-color: var(--color-text-disabled);
+    background: var(--color-border-disabled);
 
     &::before {
-      background-color: var(--color-background-disabled);
-      border: 2px solid var(--color-text-disabled);
+      background: var(--color-button-disabled);
+      border: 2px solid var(--color-border-disabled);
     }
   }
 
   input:checked + span {
     filter: brightness(80%);
-    background-color: v-bind(color);
+    background: v-bind(color);
   }
 }
 </style>

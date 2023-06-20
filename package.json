@@ -2,7 +2,7 @@
   "name": "vue-buttons",
   "version": "2.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve dev/serve.ts",
+    "serve": "vue-cli-service serve dev/main.ts",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -19,15 +19,15 @@
     "@vue/cli-service": "~5.0.0",
     "@vue/compiler-sfc": "^3.2.37",
     "@vue/eslint-config-typescript": "^10.0.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "fibonacci-styles": "github:alvidir/fibonacci-styles",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0",
-    "typescript": "~4.5.5",
-    "vue": "^3.2.37"
+    "sass-loader": "^13.2.0",
+    "typescript": "~4.9.5",
+    "vue": "^3.3.4"
   }
 }
